@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 /**
  * Tests of Sorter objects.
  *
- * @author Your Name
+ * @author David Rhoades
  */
 public class SortTester {
 
@@ -18,7 +18,7 @@ public class SortTester {
   // | Globals |
   // +---------+
 
-  Sorter sorter;
+  Sorter sorter = new InsertionSort();
 
   // +-------+-------------------------------------------------------
   // | Tests |
