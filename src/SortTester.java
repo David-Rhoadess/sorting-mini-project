@@ -1,5 +1,3 @@
-//START HERE, first real test is not working
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
@@ -8,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 import java.math.BigInteger;
 import org.junit.jupiter.api.Test;
+
+
 
 /**
  * Tests of Sorter objects.
@@ -44,7 +44,7 @@ public class SortTester {
     String[] original = { "foxtrot", "delta", "charlie", "bravo", "alpha" };
     String[] expected = { "alpha", "bravo", "charlie", "delta", "foxtrot" };
     sorter.sort(original, (x, y) -> x.compareTo(y));
-    assertArrayEquals(original, expected);
+    assertArrayEquals(expected, original);
   } // reverseOrderedStringTest
 
 
