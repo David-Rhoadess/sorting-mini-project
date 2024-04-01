@@ -6,6 +6,10 @@ import java.util.Comparator;
  * @author David Rhoades
  */
 
+
+
+
+
 public class InsertionSort implements Sorter {
 
   // +--------+------------------------------------------------------
@@ -15,7 +19,7 @@ public class InsertionSort implements Sorter {
   /**
    * The one sorter you can access.
    */
-  public static Sorter SORTER;
+  public static Sorter SORTER = new InsertionSort();
 
   // +--------------+------------------------------------------------
   // | Constructors |
@@ -25,7 +29,6 @@ public class InsertionSort implements Sorter {
    * Create a sorter.
    */
   InsertionSort() {
-    SORTER = new InsertionSort();
   } // InsertionSort()
 
   // +---------+-----------------------------------------------------
