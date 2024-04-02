@@ -50,15 +50,13 @@ public class InsertionSort implements Sorter {
       System.out.println("post:" + values[i]);
     }*/
     for (int index = 1; index < values.length; index++) {
-      for (int sortedIndex = index-1; sortedIndex >= 0; sortedIndex--) {
-        if (order.compare(values[index], values[sortedIndex]) >= 0) {
-          this.insertAt(values, index, sortedIndex);
+      for (int tempIndex = index - 1; tempIndex >= 0; tempIndex--) {
+        if (order.compare(values[tempIndex], values[index]) <= 0) {
+          this.insertAt(values, index, tempIndex + 1);
           break;
+        } else if(tempIndex == 0) {
+          this.insertAt(values, index, tempIndex);
         }
-      }
-      //print for debugging
-      for (int i = 0; i < values.length; i++) {
-        System.out.println("post:" + values[i]);
       }
     }
   } // sort(T[], Comparator<? super T>
