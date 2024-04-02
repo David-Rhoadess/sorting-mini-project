@@ -20,7 +20,7 @@ public class SortTester {
   // | Globals |
   // +---------+
 
-  Sorter sorter = new InsertionSort();
+  Sorter sorter = new MergeSort();
 
   // +-------+-------------------------------------------------------
   // | Tests |
