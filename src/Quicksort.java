@@ -73,10 +73,16 @@ public class Quicksort implements Sorter {
    * the Quicksort algorithm.
    */
   <T> void quicksort(T[] values, Comparator<? super T> order, int lb, int ub) {
-    if(ub - lb >= 1) {
+    if(ub - lb > 2) {
       int pivotLoc = partition(values, order, lb, ub);
       quicksort(values, order, lb, pivotLoc);
       quicksort(values, order, pivotLoc, ub);
+    } else if(ub - lb == 2) {
+      if(order.compare(values[lb], values[ub - 1]) > 0) {
+        T temp = values[lb];
+        values[lb] = values[ub - 1];
+        values[ub - 1] = temp;
+      }
     }
   } // quicksort(T[], Comparator<? super T>, lb, ub)
 
@@ -102,17 +108,17 @@ public class Quicksort implements Sorter {
     int small = lb + 1;
     int large = ub - 1;
     T temp;
-    while(small != large) {
-      while(small < large && order.compare(arr[small], pivot) < 0) {
+    while(small < large) {
+      while(small < large && order.compare(arr[small], pivot) <= 0) {
         small++;
       } // while 
-      while(large > small && order.compare(arr[large], pivot) > 0) {
+      while(small < large && order.compare(arr[large], pivot) > 0) {
         large--;
       } // while
       if (small < large) {
         temp = arr[small];
-        arr[small++] = arr[large];
-        arr[large--] = temp;
+        arr[small] = arr[large];
+        arr[large] = temp;
       } // if
     } // while
     arr[lb] = arr[small -1];
