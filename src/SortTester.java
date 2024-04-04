@@ -20,7 +20,7 @@ public class SortTester {
   // | Globals |
   // +---------+
 
-  Sorter sorter = new Quicksort();
+  Sorter sorter = new TimSort();
 
   // +-------+-------------------------------------------------------
   // | Tests |

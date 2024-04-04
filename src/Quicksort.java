@@ -82,8 +82,8 @@ public class Quicksort implements Sorter {
         T temp = values[lb];
         values[lb] = values[ub - 1];
         values[ub - 1] = temp;
-      }
-    }
+      } // if
+    } // if
   } // quicksort(T[], Comparator<? super T>, lb, ub)
 
   /**
@@ -109,10 +109,10 @@ public class Quicksort implements Sorter {
     int large = ub - 1;
     T temp;
     while(small < large) {
-      while(small < large && order.compare(arr[small], pivot) <= 0) {
+      while(small <= large && order.compare(arr[small], pivot) <= 0) {
         small++;
       } // while 
-      while(small < large && order.compare(arr[large], pivot) > 0) {
+      while(small <= large && order.compare(arr[large], pivot) > 0) {
         large--;
       } // while
       if (small < large) {

@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Sort using merge sort.
  *
- * @author Your Name Here
+ * @author DAvid Rhoades
  */
 
 public class MergeSort implements Sorter {

@@ -6,10 +6,6 @@ import java.util.Comparator;
  * @author David Rhoades
  */
 
-
-
-
-
 public class InsertionSort implements Sorter {
 
   // +--------+------------------------------------------------------
@@ -35,8 +31,6 @@ public class InsertionSort implements Sorter {
   // | Methods |
   // +---------+
 
-
- 
   /**
    * sorts an array containing objects of type T using insertino sort
    * @param <T> type contained in the array
@@ -56,9 +50,9 @@ public class InsertionSort implements Sorter {
           break;
         } else if(tempIndex == 0) {
           this.insertAt(values, index, tempIndex);
-        }
-      }
-    }
+        } // if
+      } // for
+    } // for
   } // sort(T[], Comparator<? super T>
 
   /**
@@ -72,7 +66,7 @@ public class InsertionSort implements Sorter {
     T temp = values[originalIndex];
     for (int i = originalIndex; i > insertionIndex; i--) {
       values[i] = values[i - 1];
-    }
+    } // for
     values[insertionIndex] = temp;
-  }
-} // class InsertionSort
+  } // insertAt(T[] values, int originalIndex, int insertionIndex)
+} // class InsertionSort 
