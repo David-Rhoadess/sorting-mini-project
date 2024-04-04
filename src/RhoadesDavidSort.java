@@ -1,5 +1,9 @@
-
-//https://www.geeksforgeeks.org/timsort/ adn chatgpt
+/**
+ * Sort using Quicksort.
+ *
+ * @author David Rhoades
+ * Source: https://www.geeksforgeeks.org/timsort/, modified by ChatGPT to implement Sorter, see more in the README
+ */
 import java.util.Comparator;
 
 public class RhoadesDavidSort implements Sorter {
@@ -11,6 +15,14 @@ public class RhoadesDavidSort implements Sorter {
         timSort(values, values.length, order);
     }
 
+    /**
+     * timSort algorithm
+     * 
+     * @param <T> the type contained in arr
+     * @param arr the array to be sorted
+     * @param n the length of arr to be sorted
+     * @param order a comparator for objects of type T
+     */
     private <T> void timSort(T[] arr, int n, Comparator<? super T> order) {
         int minRun = minRunLength(n);
 
@@ -31,6 +43,9 @@ public class RhoadesDavidSort implements Sorter {
         }
     }
 
+    /**
+     * Calculates the minimum effective run length for insertionSort based on n and MIN_MERGE
+     */
     private <T> int minRunLength(int n) {
         assert n >= 0;
         int r = 0;
@@ -41,6 +56,15 @@ public class RhoadesDavidSort implements Sorter {
         return n + r;
     }
 
+    /**
+     * sort using insertion sort
+     * 
+     * @param <T> the type contained in arr
+     * @param arr an array containing objects of type T
+     * @param left the lower (inclusive) bound of the section to be sorted
+     * @param right the upper (exclusive) bound of the section to be sorted
+     * @param order comparator for objects of type T
+     */
     private <T> void insertionSort(T[] arr, int left, int right, Comparator<? super T> order) {
         for (int i = left + 1; i <= right; i++) {
             T temp = arr[i];
@@ -53,6 +77,16 @@ public class RhoadesDavidSort implements Sorter {
         }
     }
 
+    /**
+     * sort using merge sort
+     * 
+     * @param <T> type contained in arr
+     * @param arr array to be sorted
+     * @param l the lower (inclusive) bound of the section to be sorted
+     * @param m the midpoint of the section of arr to be sorted
+     * @param r the upper (exclusive) bound of the section to be sorted
+     * @param order comparator for type T
+     */
     private <T> void merge(T[] arr, int l, int m, int r, Comparator<? super T> order) {
         int len1 = m - l + 1, len2 = r - m;
         T[] left = (T[]) new Object[len1];

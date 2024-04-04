@@ -5,7 +5,7 @@ import java.util.Arrays;
 /**
  * Sort using merge sort.
  *
- * @author DAvid Rhoades
+ * @author David Rhoades
  */
 
 public class MergeSort implements Sorter {
@@ -35,16 +35,27 @@ public class MergeSort implements Sorter {
 
   @Override
   public <T> void sort(T[] values, Comparator<? super T> order) {
-    sortHelper(values, order, 0, values.length);
+    T[] temp = Arrays.copyOf(values, values.length);
+    sortHelper(values, order, 0, values.length, temp);
   } // sort(T[], Comparator<? super T>
 
-  public <T> void sortHelper(T[] values, Comparator<? super T> order, int lo, int hi) {
+  /**
+   * Recursive helper function for sort
+   * 
+   * @param <T> the type contained in values
+   * @param values an array of type T
+   * @param order a comarator for objects of type T
+   * @param lo the lower (inclusive) bound for sorting
+   * @param hi the upper (exclusive) bound for sorting
+   * @param temp an array of type T[], the some lenth as the overall array being sorted
+   */
+  public <T> void sortHelper(T[] values, Comparator<? super T> order, int lo, int hi, T[] temp) {
     if(hi - lo > 1) {
       int mid = (hi + lo) / 2;
-      sortHelper(values, order, lo, mid);
-      sortHelper(values, order, mid, hi);
-      merge(values, lo, mid, hi, order);
-    }
+      sortHelper(values, order, lo, mid, temp);
+      sortHelper(values, order, mid, hi, temp);
+      merge(values, lo, mid, hi, order, temp);
+    } // if
   } // sort(T[], Comparator<? super T>
 
 
@@ -55,10 +66,9 @@ public class MergeSort implements Sorter {
    * Preconditions: Each subarray is sorted accorting to comparator.
    * outline taken from https://github.com/Grinnell-CSC207/lab-merge-sort/blob/main/src/MergeSorter.java
    */
-  static <T> void merge(T[] vals, int lo, int mid, int hi, Comparator<? super T> comparator) {
-    T[] temp = Arrays.copyOf(vals, hi - lo);
+  static <T> void merge(T[] vals, int lo, int mid, int hi, Comparator<? super T> comparator, T[] temp) {
     int midCpy = mid;
-    int tempIndex = 0;
+    int tempIndex = lo;
     int loCpy = lo;
     while(loCpy < mid && midCpy < hi) {
       if(comparator.compare(vals[loCpy], vals[midCpy]) < 0) {
@@ -67,15 +77,15 @@ public class MergeSort implements Sorter {
       else {
         temp[tempIndex++] = vals[midCpy++];
       } // else
-    }
+    } // while
     while(loCpy < mid) {
       temp[tempIndex++] = vals[loCpy++];
-    }
+    } // while
     while(midCpy < hi) {
       temp[tempIndex++] = vals[midCpy++];
-    }
-    for (int i = 0; i < hi - lo; i++) {
-      vals[i + lo] = temp[i];
-    }
+    } // while
+    for (int i = lo; i < hi; i++) {
+      vals[i] = temp[i];
+    } // for
   } // merge
 } // class MergeSort
